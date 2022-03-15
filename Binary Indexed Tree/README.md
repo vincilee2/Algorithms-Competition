@@ -97,7 +97,7 @@ current tree is :
 ---1:5      --11:7      -101:0      -111:0      1001:0
 update value 6 from arr[5]
 add value 6 to tree[5] = 0 get 6
-update index from 101 to view parent 1010
+update index from 101 to view parent 110
 current tree is :
 -----------------------------------------1000:24
 ------------------100:24
@@ -157,14 +157,14 @@ current tree is :
 ---1:5      --11:7      -101:6      -111:1      1001:0
 update value 9 from arr[9]
 add value 9 to tree[9] = 0 get 9
-update index from 1001 to view parent 10010
+update index from 1001 to view parent 1010
 current tree is :
 -----------------------------------------1000:37
 ------------------100:24
 --------10:8            ------110:10            ------1010:0
 ---1:5      --11:7      -101:6      -111:1      1001:9
 add value 9 to tree[10] = 0 get 9
-update index from 1010 to view parent 10100
+update index from 1010 to view parent 1100
 current tree is :
 -----------------------------------------1000:37
 ------------------100:24
@@ -172,7 +172,7 @@ current tree is :
 ---1:5      --11:7      -101:6      -111:1      1001:9
 update value 10 from arr[10]
 add value 10 to tree[10] = 9 get 19
-update index from 1010 to view parent 10100
+update index from 1010 to view parent 1100
 current tree is :
 -----------------------------------------1000:37
 ------------------100:24

@@ -30,7 +30,7 @@ def update(tree, n, i, v):
             v, i, tree[i], v + tree[i]))
         tree[i] += v
         print("update index from {0:b} to view parent {1:b}".format(\
-            i, i + i & (-i)))
+            i, i + (i & (-i))))
         i += i & (-i)
         print("current tree is :")
         plot(tree, n)
