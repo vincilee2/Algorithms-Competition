@@ -24,7 +24,7 @@ def sum(tree, i):
 
 def update(tree, n, i, v):
     i += 1
-    print("add value {} to arr[{}]".format(v, i))
+    print("update value {} from arr[{}]".format(v, i))
     while i <= n:
         print("add value {} to tree[{}] = {} get {}".format(\
             v, i, tree[i], v + tree[i]))
@@ -32,6 +32,8 @@ def update(tree, n, i, v):
         print("update index from {0:b} to view parent {1:b}".format(\
             i, i + i & (-i)))
         i += i & (-i)
+        print("current tree is :")
+        plot(tree, n)
 
         
 def construct(arr, n):
@@ -42,30 +44,30 @@ def construct(arr, n):
 
     return tree
 
+
+def plot(tree, n):
+    plot_levels = [""] * (n.bit_length())
+    for i in range(1, n + 1):
+        last_bit = i & (-i)
+        level = "{0:b}".format(last_bit).count('0')
+        # print("last_bit {0:b} count 0 {1}".format(last_bit, level))
+        placeholder = ""
+        if plot_levels[level] != "":
+            for j in range(level + 1):
+                placeholder += ' ' * 6
+        for j in range(1 << (level + 1)):
+            placeholder += '-' * 3
+        
+        placeholder = list(placeholder)
+        num = "{0:b}:{1}".format(i, tree[i])
+        placeholder[-len(num):] = list(num)
+        
+        plot_levels[level] += ''.join(placeholder)
+
+    for i in range(len(plot_levels) - 1, -1, -1):
+        print(plot_levels[i])
+
+
 arr = inlt()
 n = len(arr)
 tree = construct(arr, n)
-print("origin arr is {}".format(arr))
-plot_levels = [""] * (n.bit_length())
-
-
-for i in range(1, n + 1):
-    last_bit = i & (-i)
-    level = "{0:b}".format(last_bit).count('0')
-    # print("last_bit {0:b} count 0 {1}".format(last_bit, level))
-    placeholder = ""
-    if plot_levels[level] != "":
-        for j in range(level + 1):
-            placeholder += ' ' * 6
-    for j in range(1 << (level + 1)):
-        placeholder += '-' * 3
-    
-    placeholder = list(placeholder)
-    num = "{0:b}:{1}".format(i, tree[i])
-    placeholder[-len(num):] = list(num)
-    
-    plot_levels[level] += ''.join(placeholder)
-
-for i in range(len(plot_levels) - 1, -1, -1):
-    print(plot_levels[i])
-
