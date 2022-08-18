@@ -23,17 +23,19 @@ def sum(tree, i):
     return s
 
 def update(tree, n, i, v):
-    i += 1
     print("update value {} from arr[{}]".format(v, i))
+    i += 1
     while i <= n:
         print("add value {} to tree[{}] = {} get {}".format(\
             v, i, tree[i], v + tree[i]))
         tree[i] += v
+        print("current tree is :")
+        plot(tree, n)
         print("update index from {0:b} to view parent {1:b}".format(\
             i, i + (i & (-i))))
         i += i & (-i)
-        print("current tree is :")
-        plot(tree, n)
+        
+        
 
         
 def construct(arr, n):
@@ -52,14 +54,18 @@ def plot(tree, n):
         level = "{0:b}".format(last_bit).count('0')
         # print("last_bit {0:b} count 0 {1}".format(last_bit, level))
         placeholder = ""
+        baseSlotCharNum = 6
+        # add space between number
         if plot_levels[level] != "":
-            for j in range(level + 1):
-                placeholder += ' ' * 6
-        for j in range(1 << (level + 1)):
-            placeholder += '-' * 3
-        
+            placeholder = " " * baseSlotCharNum * (level + 1)
+
+        # add slot for keep number
+        placeholder += '-' * (1 << level) * baseSlotCharNum
+
         placeholder = list(placeholder)
         num = "{0:b}:{1}".format(i, tree[i])
+        
+        # populate number into slot
         placeholder[-len(num):] = list(num)
         
         plot_levels[level] += ''.join(placeholder)
@@ -67,7 +73,6 @@ def plot(tree, n):
     for i in range(len(plot_levels) - 1, -1, -1):
         print(plot_levels[i])
 
-
+n = inp()
 arr = inlt()
-n = len(arr)
 tree = construct(arr, n)
